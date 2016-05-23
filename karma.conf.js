@@ -1,3 +1,4 @@
+// load in our webpack config file
 var webpackConfig = require('./webpack.config.js');
 
 module.exports = function (config) {
@@ -15,6 +16,7 @@ module.exports = function (config) {
                 timeout: '5000'
             }
         },
+        // the below two webpack options allow us to use webpack in our test files
         webpack: webpackConfig,
         webpackServer: {
             noInfo: true
