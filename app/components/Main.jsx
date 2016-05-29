@@ -10,7 +10,6 @@ var Main = props => {
             <Nav />
             <div className="row">
                 <div className="columns medium-6 large-4 small-centered">
-                    <p className="text-center">Main.jsx rendered</p>
                     { props.children }
                 </div>
             </div>
