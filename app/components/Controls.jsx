@@ -12,6 +12,10 @@ var Controls = React.createClass({
             this.props.onStatusChange(newStatus);
         };
     },
+    // // this is another lifecycle method invoked when the component receives new props
+    // componentWillReceiveProps: function componentWillReceivePropsControls(nextProps) {
+    //     console.log('Controls componentWillReceiveProps', nextProps.countdownStatus);
+    // },
     render: function renderControls() {
         var { countdownStatus } = this.props;
         

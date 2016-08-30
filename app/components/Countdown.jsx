@@ -12,6 +12,7 @@ var Countdown = React.createClass({
             countdownStatus: 'stopped'
         };
     },
+    // the below five methods are React component lifecycle methods and are called at their respective events in the components lifecycle
     // `componentDidUpdate` is called every time the state of the component is changed
     componentDidUpdate: function componentDidUpdateCountdown(prevProps, prevState) {
         
@@ -32,6 +33,29 @@ var Countdown = React.createClass({
         }
         
     },
+    // // `componentWillUpdate` is invoked just before an update and as such `this.setState()` cannot be called here
+    // componentWillUpdate: function componentWillUpdateCountdown(nextProps, nextState) {
+
+    // },
+    // // `componentWillMount` is invoked only once, on both client and server, at the initial rendering of the component
+    // // as this method is called prior to rendering changes to things like the `refs` or DOM aren't available
+    // // we do have access to update internal state though
+    // componentWillMount: function componentWillMountCountdown() {
+    //     console.log('Countdown componentWillMount');
+    // },
+    // // `componentDidMount` is called immediately after initial rendering so allows access to `refs` and the DOM
+    // // however unlike `componentWillMount` is only called on the client
+    // componentDidMount: function componentDidMountCountdown() {
+    //     console.log('Countdown componentDidMount');
+    // },
+    // `componentWillUnmount` is called when the component is removed from the DOM
+    // this is where it is recommended to clean up anything left by the component
+    // in our case we want to make sure we have cleared the interval timer say if someone navigates away without pausing/stopping
+    componentWillUnmount: function componentWillUnmountCountdown() {
+        // console.log('Countdown componentWillUnmount');
+        clearInterval(this.timer);
+        this.timer = undefined;
+    },
     // our `startTimer` method will invoke `setInterval`, a built JavaScript method
     // which will take one off the `count` and set the state at 1s intervals
     startTimer: function startTimerCountdown() {
@@ -42,6 +66,9 @@ var Countdown = React.createClass({
                 // the brackets aren't required but help readability of the expression
                 count: (newCount >= 0 ? newCount : 0)
             });
+
+            // clear the timer once we've reached zero by updating the status
+            if (newCount === 0) this.setState({ countdownStatus: 'stopped' });
         }, 1000);
     },
     handleSetCountdown: function handleSetCountdown(seconds) {
