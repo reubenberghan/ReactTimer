@@ -38,6 +38,17 @@ describe('Controls', () => {
             expect($startButton.length).toBe(1);
         });
         
+        it('should render start when stopped', () => {
+            var controls = TestUtils.renderIntoDocument(<Controls countdownStatus="stopped" />);
+            var $el = $(ReactDOM.findDOMNode(controls));
+            
+            // we can use the psuedo selector `:contains()` to find an element which has the content we pass
+            var $startButton = $el.find('button:contains(Start)');
+            
+            // the jQuery objects length in this case should be 1 if it found the 'Start' button
+            expect($startButton.length).toBe(1);
+        });
+        
     });
     
 });
