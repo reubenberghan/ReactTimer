@@ -21,7 +21,7 @@ describe('Timer', () => {
             var timer = TestUtils.renderIntoDocument(<Timer />);
             timer.handleStatusChange('started');
 
-            expect(timer.state.countdownStatus).toBe('started');
+            expect(timer.state.timerStatus).toBe('started');
 
             setTimeout(() => {
                 expect(timer.state.count).toBe(1);
@@ -38,7 +38,7 @@ describe('Timer', () => {
             setTimeout(() => {
                 expect(timer.state.count).toBe(1);
                 timer.handleStatusChange('paused');
-                expect(timer.state.countdownStatus).toBe('paused');
+                expect(timer.state.timerStatus).toBe('paused');
             }, 1001);
 
             setTimeout(() => {
@@ -56,7 +56,7 @@ describe('Timer', () => {
             setTimeout(() => {
                 timer.handleStatusChange('stopped');
                 expect(timer.state.count).toBe(0);
-                expect(timer.state.countdownStatus).toBe('stopped');
+                expect(timer.state.timerStatus).toBe('stopped');
                 done();
             }, 1001);
             
