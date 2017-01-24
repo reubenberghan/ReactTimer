@@ -2,7 +2,7 @@
 
 Timer and countdown application built with React on Node.js.
 
-View live demo on Heroku at [http://reubens-react-timer.herokuapp.com].
+View live demo on Heroku at http://reubens-react-timer.herokuapp.com.
 
 ## Todo List
 
